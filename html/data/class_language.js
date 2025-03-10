@@ -1,3 +1,5 @@
+"use strict";
+
 class Language {
     static all_languages = {};
 
