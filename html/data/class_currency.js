@@ -58,3 +58,5 @@ function fill_currencies() {
         })
     })
 }
+
+fill_currencies();

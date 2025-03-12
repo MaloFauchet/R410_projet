@@ -48,3 +48,5 @@ function fill_languages() {
         });
     });
 }
+
+fill_languages();
