@@ -69,7 +69,7 @@ class Country{
         return this._area;
     }
 
-    get _ls_countries_neighbor() {
+    get ls_countries_neighbor() {
         return this._ls_countries_neighbor;
     }
 
@@ -89,7 +89,7 @@ class Country{
         return this._demonym;
     }
 
-    get topLevelDomains() {
+    get top_level_domains() {
         return this._top_level_domains;
     }
 
