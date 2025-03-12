@@ -89,7 +89,7 @@ class Country{
         return this._demonym;
     }
 
-    get topLevelDomains() {
+    get top_level_domains() {
         return this._top_level_domains;
     }
 
