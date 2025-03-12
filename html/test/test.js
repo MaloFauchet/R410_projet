@@ -1,9 +1,15 @@
 "use strict";
 
 // Malo
+
+/**
+ * Tableau des pays dont au moins un pays frontalier n'est pas dans le même continent.
+ */
 function outsideTheContinent() {
-    Country.all_countries.forEach(country => {
-        console.log(country);
+    let ls_countries = Country.all_countries;
+    Object.keys(ls_countries).forEach(country => {
+        for
+        console.log(ls_countries[country]);
     });
 }
 
