@@ -53,5 +53,4 @@ function fill_countries(){
     });
 }
 
-fill_countries()
-console.log(Country.all_countries["AFG"].getLanguages()); 
+fill_countries();

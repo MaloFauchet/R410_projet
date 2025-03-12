@@ -9,7 +9,7 @@ function outsideTheContinent() {
 
 // Igor
 function moreNeighbors() {
-    
+    // On trouve le max de voisins
 }
 
 // Malo

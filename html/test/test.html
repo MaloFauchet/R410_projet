@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +14,11 @@
             justify-content: center;
             background-color: #F3F3F3;
         }
+
         h1 {
             font-size: 3em;
         }
+
         .testButton {
             margin: 2em 0;
             padding: 1em;
@@ -27,10 +30,12 @@
             border: 1px solid black;
             /* width: max-content; */
         }
+
         .testButton label {
             margin-bottom: 15px;
             font-size: large;
         }
+
         .testButton button {
             color: white;
             background-color: darkslategray;
@@ -39,18 +44,27 @@
             border-radius: 5px;
         }
     </style>
+    <script src="jquery/jquery.js"></script>
+    <script src="data/countries.js"></script>
+    <script src="data/class_currency.js"></script>
+    <script src="data/class_language.js"></script>
+    <script src="data/class_country.js"></script>
+    <script src="test/test.js"></script>
 </head>
+
 <body>
     <header>
         <h1>Tests</h1>
     </header>
     <main>
         <div class="testButton">
-            <label for="outsideTheContinent">Tableau des pays dont au moins un pays frontalier n'est pas dans le même continent.</label>
+            <label for="outsideTheContinent">Tableau des pays dont au moins un pays frontalier n'est pas dans le même
+                continent.</label>
             <button id="outsideTheContinent" onclick="outsideTheContinent()">Lancer le test</button>
         </div>
         <div class="testButton">
-            <label for="moreNeighbors">Tableau des pays ayant le plus grand nombre de voisins.<br><em>(+Affichage des voisins)</em></label>
+            <label for="moreNeighbors">Tableau des pays ayant le plus grand nombre de voisins.<br><em>(+Affichage des
+                    voisins)</em></label>
             <button id="moreNeighbors" onclick="moreNeighbors()">Lancer le test</button>
         </div>
         <div class="testButton">
@@ -58,19 +72,23 @@
             <button id="neighborless" onclick="neighborless()">Lancer le test</button>
         </div>
         <div class="testButton">
-            <label for="moreLanguage">Tableau des pays parlant le plus de langues.<br><em>(+Affichage des langues)</em></label>
+            <label for="moreLanguage">Tableau des pays parlant le plus de langues.<br><em>(+Affichage des
+                    langues)</em></label>
             <button id="moreLanguage" onclick="moreLanguage()">Lancer le test</button>
         </div>
         <div class="testButton">
-            <label for="withCommonLanguage">Tableau des pays ayant au moins un voisin parlant l'une de ses langues.<br><em>(+Affichage des pays voisins, +Affichage des Langues en question)</em></label>
+            <label for="withCommonLanguage">Tableau des pays ayant au moins un voisin parlant l'une de ses
+                langues.<br><em>(+Affichage des pays voisins, +Affichage des Langues en question)</em></label>
             <button id="withCommonLanguage" onclick="withCommonLanguage()">Lancer le test</button>
         </div>
         <div class="testButton">
-            <label for="withoutCommonCurrency">Tableau des pays sans aucun voisin ayant au moins une de ses monnaies.</label>
+            <label for="withoutCommonCurrency">Tableau des pays sans aucun voisin ayant au moins une de ses
+                monnaies.</label>
             <button id="withoutCommonCurrency" onclick="withoutCommonCurrency()">Lancer le test</button>
         </div>
         <div class="testButton">
-            <label for="sortingDecreasingDensity">Tableau des pays triés par ordre décroissant de densité de population.</label>
+            <label for="sortingDecreasingDensity">Tableau des pays triés par ordre décroissant de densité de
+                population.</label>
             <button id="sortingDecreasingDensity" onclick="sortingDecreasingDensity()">Lancer le test</button>
         </div>
         <div class="testButton">
@@ -81,4 +99,5 @@
 
     <script src="test.js"></script>
 </body>
+
 </html>
