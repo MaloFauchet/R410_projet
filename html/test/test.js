@@ -1,7 +1,9 @@
 "use strict";
 
 function outsideTheContinent() {
-    
+    Country.all_countries.forEach(country => {
+        console.log(country);
+    });
 }
 
 function moreNeighbors() {
