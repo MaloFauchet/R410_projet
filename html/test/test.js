@@ -10,6 +10,11 @@ function outsideTheContinent() {
 // Igor
 function moreNeighbors() {
     // On trouve le max de voisins
+    max = 0;
+
+    Country.all_countries.forEach(element => {
+        
+    });
 }
 
 // Malo
