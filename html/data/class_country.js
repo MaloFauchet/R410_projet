@@ -69,7 +69,7 @@ class Country{
         return this._area;
     }
 
-    get _ls_countries_neighbor() {
+    get ls_countries_neighbor() {
         return this._ls_countries_neighbor;
     }
 
