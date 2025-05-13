@@ -32,6 +32,49 @@ function closePopup() {
 
 // Function to fill the Country class with data
 fill_countries();
+// Function to fill the Language class with data
+fill_languages();
+
+/////////////
+// FILTERS //
+/////////////
+
+let filtered_rows = [];
+
+// continent filter
+let continent_filter = document.getElementById("continent-select");
+continent_filter.onchange = updateFilters;
+let continents = [];
+
+// fill the continent filter with the continents
+Object.values(Country.all_countries).forEach((country) => {
+    // Check if the continent is already in the array
+    if (continents.includes(country.continent)) {
+        return;
+    }
+    // Create a new option for each continent
+    let option = document.createElement("option");
+    option.value = country.continent;
+    option.innerText = country.continent;
+    continent_filter.appendChild(option);
+    continents.push(country.continent);
+});
+
+let language_filter = document.getElementById("language-select");
+language_filter.onchange = updateFilters;
+
+// fill the language filter with the languages
+Object.values(Language.all_languages).forEach((language) => {
+    // Create a new option for each language
+    let option = document.createElement("option");
+    option.value = language.iso639_2;
+    option.innerText = language.name;
+    language_filter.appendChild(option);
+});
+
+
+let country_filter = document.getElementById("country-select");
+
 
 // Loads the coutry rows into the rows array
 Object.values(Country.all_countries).map((country) => {
@@ -81,14 +124,43 @@ Object.values(Country.all_countries).map((country) => {
     rows.push(tr);
 });
 
+function updateFilters() {
+    reloadFilteredRows();
+    loadPage(page);
+}
+
+function reloadFilteredRows() {
+    filtered_rows = rows.filter((row) => {
+        // Get the country name from the row
+        let country_name = row.cells[0].innerText;
+
+        // Get the language from the row
+        let languages = row.getElementsByTagName("img")[0].alt;
+
+        // Filter by country name
+        if (country_filter.value !== "" && !country_name.includes(country_filter.value)) {
+            return false;
+        }
+
+        // Filter by language
+        if (language_filter.value !== "" && !languages.includes(language_filter.value)) {
+            return false;
+        }
+
+        return true;
+    });
+
+}
+
 /**
  * Updates the page number display
  * @returns {void}
  */
 function updatePageNumber() {
+    let number_of_pages = Math.ceil(filtered_rows.length / rows_per_page);
     // Update the page number display
     for (let i = 0; i < page_numbers.length; i++) {
-        page_numbers[i].innerText = page;
+        page_numbers[i].innerText = page + " / " + number_of_pages;
     }
 }
 
@@ -112,11 +184,11 @@ function loadPage(page_number) {
 
     // Calculate the start and end index for the current page
     let start = (page_number - 1) * rows_per_page;
-    let end = Math.min(start + rows_per_page, rows.length);
+    let end = Math.min(start + rows_per_page, filtered_rows.length);
 
     // Append the rows for the current page to the table body
     for (let i = start; i < end; i++) {
-        tbody.appendChild(rows[i]);
+        tbody.appendChild(filtered_rows[i]);
     }
 
     // Update the page number display
@@ -130,14 +202,14 @@ function loadPage(page_number) {
     }
 
     // Disable the next button if on the last page
-    if (page_number === Math.ceil(rows.length / rows_per_page)) {
+    if (page_number === Math.ceil(filtered_rows.length / rows_per_page)) {
         document.getElementById("next-button").disabled = true;
     } else {
         document.getElementById("next-button").disabled = false;
     }
 }
 
-loadPage(page);
+updateFilters();
 
 // Event listeners for the previous and next buttons
 document.getElementById("previous-button").addEventListener("click", () => {

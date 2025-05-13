@@ -30,7 +30,7 @@ class Country{
     }
 
     getPopDensity() {
-        return this._pop / this._area;
+        return Number((this._pop / this._area).toFixed(2));;
     }
 
     getBorders(){
