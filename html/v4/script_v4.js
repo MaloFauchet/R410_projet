@@ -84,26 +84,31 @@ Object.values(Country.all_countries).map((country) => {
     // Country Name
     let td = document.createElement("td");
     td.innerText = country.name;
+    td.setAttribute("data-type", "country-name");
     tr.appendChild(td);
 
     // Country Population
     td = document.createElement("td");
     td.innerText = country.pop;
+    td.setAttribute("data-type", "country-population");
     tr.appendChild(td);
 
     // Country Area
     td = document.createElement("td");
     td.innerText = country.area;
+    td.setAttribute("data-type", "country-area");
     tr.appendChild(td);
 
     // Country Population Density
     td = document.createElement("td");
     td.innerText = country.getPopDensity();
+    td.setAttribute("data-type", "country-population-density");
     tr.appendChild(td);
 
     // Country Continent
     td = document.createElement("td");
     td.innerText = country.continent;
+    td.setAttribute("data-type", "country-continent");
     tr.appendChild(td);
 
     // Country flag
@@ -115,6 +120,7 @@ Object.values(Country.all_countries).map((country) => {
     img.title = country.name + " flag";
     img.style.width = "50px";
     img.onclick = (event) => imgClick(event, country);
+    td.setAttribute("data-type", "country-flag");
     td.appendChild(img);
     
     tr.appendChild(td);
@@ -133,9 +139,11 @@ function reloadFilteredRows() {
     filtered_rows = rows.filter((row) => {
         // Get the country name from the row
         let country_name = row.cells[0].innerText;
+        console.log(country_name);        
 
         // Get the language from the row
         let languages = row.getElementsByTagName("img")[0].alt;
+        console.log(languages);        
 
         // Filter by country name
         if (country_filter.value !== "" && !country_name.includes(country_filter.value)) {

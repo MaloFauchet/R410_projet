@@ -170,7 +170,7 @@ function imgClick(event, country) {
 /**
  * Fired when clicked on a row. Shows the popup with the country information.
  * @param {Country} country Country object
- */
+ */ 
 function trClick(country) {
     // set the popup content
     popup_content.innerHTML = "<h2>" + country.name + "</h2>" +
