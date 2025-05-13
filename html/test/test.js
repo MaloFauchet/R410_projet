@@ -128,8 +128,10 @@ function withCommonLanguage() {
 
 // Igor
 function withoutCommonCurrency() {
-    console.table(Object.values(Country.all_countries).filter((country) => {
-        let res = country.ls_countries_neighbor.ever((code) => Country.all_languages[code].currency) 
+    console.table(Object.values(Country.all_countries).filter( (country) => {
+        let country_currencies = country.currencies;
+        console.log(country_currencies);
+        return country.ls_countries_neighbor ? country.ls_countries_neighbor.every(code => Country.all_countries[code].currencies.every(currency => currency ? !country_currencies.includes(currency) : true)) : true
     }))
 }
 
