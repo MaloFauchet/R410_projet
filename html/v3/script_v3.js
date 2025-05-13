@@ -150,11 +150,35 @@ document.getElementById("next-button").addEventListener("click", () => {
     loadPage(page);
 });
 
+/**
+ * Fired when clicked on an image. Shows the popup with the flag image.
+ * @param {MouseEvent} event Click event
+ * @param {Country} country Country object
+ * @returns {void}
+ */
 function imgClick(event, country) {
     // prevent event bubbling
     event.stopPropagation();
+
+    // set the popup content
+    popup_content.innerHTML = "<img src='" + country.url_flag_svg + "' alt='" + country.name + " flag' style='width: 100%;' />";
+
+    // show the popup
+    popup.style.display = "block";
 }
 
+/**
+ * Fired when clicked on a row. Shows the popup with the country information.
+ * @param {Country} country Country object
+ */
 function trClick(country) {
-    alert("You clicked on the row of " + country.name);
+    // set the popup content
+    popup_content.innerHTML = "<h2>" + country.name + "</h2>" +
+        "<p>Population: " + country.pop + "</p>" +
+        "<p>Area: " + country.area + "</p>" +
+        "<p>Population Density: " + country.getPopDensity() + "</p>" +
+        "<p>Continent: " + country.continent + "</p>";
+
+    // show the popup
+    popup.style.display = "block";
 }
