@@ -1,7 +1,9 @@
 "use strict";
 
+// Get the table body element
 let tbody = document.getElementById("countries-tbody");
 
+// Function to fill the Country class with data
 fill_countries();
 
 Object.values(Country.all_countries).map((country) => {
