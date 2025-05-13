@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="popup" style="display: none;">
+        <div id="popup-content">
+            <h2>Popup Title</h2>
+            <p>This is a popup message.</p>
+        </div>
+        <button id="popup-close-button">Fermer</button>
+    </div>
+
+    <main>
+        <h1>Liste des pays</h1>
+        <h2>Page n°<span class="page-number"></span></h2>
+        <table>
+            <thead>
+                <th>Nom</th>
+                <th>Population</th>
+                <th>Surface</th>
+                <th>Densité de population</th>
+                <th>Continent d'appartenance</th>
+                <th>Drapeau</th>
+            </thead>
+            <tbody id="countries-tbody">
+
+            </tbody>
+        </table>
+
+        <div id="buttons-box">
+            <button type="button" id="previous-button">PRÉC</button>
+            <p class="page-number"></p>
+            <button type="button" id="next-button">SUIV</button>
+        </div>
+    </main>
+
+    <script src="/jquery/jquery.js"></script>
+    <script src="/data/countries.js"></script>
+    <script src="/data/class_currency.js"></script>
+    <script src="/data/class_language.js"></script>
+    <script src="/data/class_country.js"></script>
+    <script src="script_v3.js"></script>
+</body>
+</html>
