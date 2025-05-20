@@ -117,7 +117,6 @@ button:disabled:hover {
 #popup {
     display: block;
     width: 300px;
-    z-index: 1000;
     background-color: white;
     border: 1px solid #ccc;
     padding: 10px;
@@ -125,6 +124,7 @@ button:disabled:hover {
 }
 
 #container-pop-up{
+    z-index: 1000;
     top: 0;
     left: 0;
     position: fixed;
@@ -133,4 +133,53 @@ button:disabled:hover {
     width: 100vw;
     height: 100vh;
     background-color: #000000b0;
+}
+
+aside>#filters {
+    display: flex;
+}
+
+aside>#filters>div{
+    margin: 0 20px;
+}
+
+aside>#filters>div>label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+aside>#filters>div>input{
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+aside>#filters>div>input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+aside>#filters>div>select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: white;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  padding-right: 35px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+aside>#filters>div>select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+  outline: none;
 }

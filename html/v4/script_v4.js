@@ -127,7 +127,7 @@ Object.values(Country.all_countries).map((country) => {
     
     tr.appendChild(td);
 
-    tr.onclick = () => trClick(country);
+    tr.onclick = () => trClick(event,country);
     // Add the row to the table body
     rows[country.alpha3] = tr;
 });
@@ -263,16 +263,18 @@ function imgClick(event, country) {
 
     // set the popup content
     popup_content.innerHTML = "<img src='" + country.url_flag_svg + "' alt='" + country.name + " flag' style='width: 100%;' />";
-
+    
     // show the popup
-    popup.style.display = "block";
+    popup.style.display = "flex";
+    popup.style.alignItems = "center";
+    popup.style.justifyContent = "center";
 }
 
 /**
  * Fired when clicked on a row. Shows the popup with the country information.
  * @param {Country} country Country object
  */
-function trClick(country) {
+function trClick(event, country) {
     // set the popup content
     popup_content.innerHTML = "<h2>" + country.name + "</h2>" +
         "<p>Population: " + country.pop + "</p>" +
@@ -281,5 +283,7 @@ function trClick(country) {
         "<p>Continent: " + country.continent + "</p>";
 
     // show the popup
-    popup.style.display = "block";
+    popup.style.display = "flex";
+    popup.style.alignItems = "center";
+    popup.style.justifyContent = "center";
 }
