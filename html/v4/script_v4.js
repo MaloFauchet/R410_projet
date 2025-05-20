@@ -16,7 +16,7 @@ let page = 1;
 let rows_per_page = 25;
 
 // DOM element of the popup
-let popup = document.getElementById("popup");
+let popup = document.getElementById("container-pop-up");
 popup.style.display = "none";
 
 // DOM element of the popup content

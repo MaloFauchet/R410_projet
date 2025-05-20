@@ -18,7 +18,7 @@ body {
     align-items: center;
     color: #333;
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: #b1b1b1;
 }
 
 h2 {
@@ -34,7 +34,9 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     background-color: #fff;
+    border-radius: 6px;
     font-size: 14px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 table thead th {
