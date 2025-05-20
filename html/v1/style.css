@@ -11,17 +11,14 @@
     --danger-color: #e74c3c;
 }
 
-body,
-main {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #333;
-    padding: 0;
-    margin: 0;
+    padding: 20px;
     background-color: #b1b1b1;
-    width: 100%;
 }
 
 h2 {
@@ -76,61 +73,4 @@ table tbody tr:hover {
 table tbody td {
     padding: 12px 16px;
     vertical-align: middle;
-}
-
-#buttons-box {
-    margin: 50px 0;
-    display: flex;
-    align-items: center;
-    justify-self: center;
-    flex-direction: row;
-}
-
-#buttons-box>* {
-    margin: 0 50px;
-}
-
-button {
-    cursor: pointer;
-    padding: 10px 20px;
-    background-color: #2c3e50;
-    color: #fff;
-    border: 1px solid #2c3e50;
-    border-radius: 20px;
-}
-
-button:hover {
-    color: #2c3e50;
-    background-color: #fff;
-}
-
-button:disabled {
-    opacity: 0.5;
-    pointer-events: none;
-}
-
-button:disabled:hover {
-    color: #fff;
-    background-color: #2c3e50;
-}
-
-#popup {
-    display: block;
-    width: 300px;
-    z-index: 1000;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-#container-pop-up{
-    top: 0;
-    left: 0;
-    position: fixed;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: #000000b0;
 }
