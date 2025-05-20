@@ -3,8 +3,9 @@
 // Get the table body element
 let tbody = document.getElementById("countries-tbody");
 
-// Holds the formatted rows in an array
-let rows = [];
+// Holds the formatted rows in an object
+// The key is the tr element and the value is the country object
+let rows = {};
 
 // Holds the DOM elements for the page numbers
 let page_numbers = document.getElementsByClassName("page-number");
@@ -67,13 +68,14 @@ language_filter.onchange = updateFilters;
 Object.values(Language.all_languages).forEach((language) => {
     // Create a new option for each language
     let option = document.createElement("option");
-    option.value = language.iso639_2;
+    option.value = language.name;
     option.innerText = language.name;
     language_filter.appendChild(option);
 });
 
 
 let country_filter = document.getElementById("country-select");
+country_filter.onchange = updateFilters;
 
 
 // Loads the coutry rows into the rows array
@@ -84,26 +86,31 @@ Object.values(Country.all_countries).map((country) => {
     // Country Name
     let td = document.createElement("td");
     td.innerText = country.name;
+    td.setAttribute("data-type", "country-name");
     tr.appendChild(td);
 
     // Country Population
     td = document.createElement("td");
     td.innerText = country.pop;
+    td.setAttribute("data-type", "country-population");
     tr.appendChild(td);
 
     // Country Area
     td = document.createElement("td");
     td.innerText = country.area;
+    td.setAttribute("data-type", "country-area");
     tr.appendChild(td);
 
     // Country Population Density
     td = document.createElement("td");
     td.innerText = country.getPopDensity();
+    td.setAttribute("data-type", "country-population-density");
     tr.appendChild(td);
 
     // Country Continent
     td = document.createElement("td");
     td.innerText = country.continent;
+    td.setAttribute("data-type", "country-continent");
     tr.appendChild(td);
 
     // Country flag
@@ -115,27 +122,39 @@ Object.values(Country.all_countries).map((country) => {
     img.title = country.name + " flag";
     img.style.width = "50px";
     img.onclick = (event) => imgClick(event, country);
+    td.setAttribute("data-type", "country-flag");
     td.appendChild(img);
     
     tr.appendChild(td);
 
     tr.onclick = () => trClick(country);
     // Add the row to the table body
-    rows.push(tr);
+    rows[country.alpha3] = tr;
 });
 
+/**
+ * Updates the filters and reloads the filtered rows
+ * @returns {void}
+ */
 function updateFilters() {
     reloadFilteredRows();
     loadPage(page);
 }
 
+/**
+ * Reloads the filtered rows based on the selected filters
+ * @returns {void}
+ */
 function reloadFilteredRows() {
-    filtered_rows = rows.filter((row) => {
+    filtered_rows = Object.keys(rows).filter((key) => {
+        let row = rows[key];
+        let country = Country.all_countries[key];
+
         // Get the country name from the row
-        let country_name = row.cells[0].innerText;
+        let country_name = country.name;
 
         // Get the language from the row
-        let languages = row.getElementsByTagName("img")[0].alt;
+        let languages = country.languages;
 
         // Filter by country name
         if (country_filter.value !== "" && !country_name.includes(country_filter.value)) {
@@ -143,13 +162,21 @@ function reloadFilteredRows() {
         }
 
         // Filter by language
-        if (language_filter.value !== "" && !languages.includes(language_filter.value)) {
+        debugger;
+        let languages_names = languages.map((language) => Language.all_languages[language].name);
+        // laguage_filter.value must be equal to Language.all_languages[languages].name
+        if (language_filter.value !== "" && !languages_names.includes(language_filter.value)) {
             return false;
         }
 
+        // Filter by continent
+        if (continent_filter.value !== "" && continent_filter.value !== country.continent) {
+            return false;
+        }
+        
         return true;
     });
-
+    console.log(filtered_rows);
 }
 
 /**
@@ -175,8 +202,8 @@ function loadPage(page_number) {
     if (page_number < 1) {
         page_number = 1;
     }
-    if (page_number > Math.ceil(rows.length / rows_per_page)) {
-        page_number = Math.ceil(rows.length / rows_per_page);
+    if (page_number > Math.ceil(filtered_rows.length / rows_per_page)) {
+        page_number = Math.ceil(filtered_rows.length / rows_per_page);
     }
 
     // Clear the table body
@@ -188,7 +215,9 @@ function loadPage(page_number) {
 
     // Append the rows for the current page to the table body
     for (let i = start; i < end; i++) {
-        tbody.appendChild(filtered_rows[i]);
+        let row = filtered_rows[i];
+        // Append the row to the table body
+        tbody.appendChild(rows[row]);
     }
 
     // Update the page number display
