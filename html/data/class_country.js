@@ -66,7 +66,7 @@ class Country{
     }
 
     get area() {
-        return this._area;
+        return this._area ? this._area : NaN;
     }
 
     get ls_countries_neighbor() {
