@@ -89,9 +89,11 @@ function loadPage(page_number) {
     // Minimum and maximum page number validations
     if (page_number < 1) {
         page_number = 1;
+        page = 1;
     }
-    if (page_number > Math.ceil(rows.length / rows_per_page)) {
-        page_number = Math.ceil(rows.length / rows_per_page);
+    if (page_number > Math.ceil(filtered_rows.length / rows_per_page)) {
+        page_number = Math.ceil(filtered_rows.length / rows_per_page);
+        page = page_number;
     }
 
     localStorage.setItem("page_number", page_number.toString());
