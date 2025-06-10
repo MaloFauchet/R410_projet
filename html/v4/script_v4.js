@@ -11,7 +11,7 @@ let rows = {};
 let page_numbers = document.getElementsByClassName("page-number");
 
 // Page number
-let page = localStorage.getItem("page_number");
+let page = parseInt(localStorage.getItem("page_number"));
 
 if (page === null) {
     page = 1;
@@ -166,7 +166,6 @@ function reloadFilteredRows() {
         }
 
         // Filter by language
-        debugger;
         let languages_names = languages.map((language) => Language.all_languages[language].name);
         // laguage_filter.value must be equal to Language.all_languages[languages].name
         if (language_filter.value !== "" && !languages_names.includes(language_filter.value)) {

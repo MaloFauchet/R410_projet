@@ -23,7 +23,7 @@ let sortby = {
 let page_numbers = document.getElementsByClassName("page-number");
 
 // Page number
-let page = localStorage.getItem("page_number");
+let page = parseInt(localStorage.getItem("page_number"));
 
 if (page === null) {
     page = 1;
