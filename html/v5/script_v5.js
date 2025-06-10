@@ -153,23 +153,37 @@ Object.values(Country.all_countries).map((country) => {
 //////////
 
 function updateSortBy(sortedby) {
-    let selected_sortby = Object.keys(sortby).find((key) => sortby[key] !== 0);
-    document.getElementById(selected_sortby).classList.add("filtre-selected");
+    debugger;
+    // remove precedent filter class
+    let filtered_elem = [].slice.call(document.getElementsByClassName('filtre-selected'));
+    for (let i = 0; i < filtered_elem.length; i++) {
+        filtered_elem[i].classList.remove("filtre-selected");
+        try {
+            filtered_elem[i].classList.remove("croissant");
+        } catch (error) {console.log(error)}
+        try {
+            filtered_elem[i].classList.remove("decroissant");
+        } catch (error) {console.log(error)}
+    }
+
+    document.getElementById(sortedby).classList.add("filtre-selected");
 
     // Update the sortby object
     Object.keys(sortby).forEach((key) => {
         if (key === sortedby) {
             if (sortby[key] === 0) {
                 sortby[key] = 1;
+                document.getElementById(sortedby).classList.add("croissant");
             } else if (sortby[key] === 1) {
                 sortby[key] = 2;
+                document.getElementById(sortedby).classList.add("decroissant");
             }
             else {
+                document.getElementById(sortedby).classList.add("croissant");
                 sortby[key] = 1;
             }
         } else {
             sortby[key] = 0;
-            document.getElementById(sortedby).classList.remove("filtre-selected");
         }
     });
 
