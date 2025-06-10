@@ -11,7 +11,11 @@ let rows = {};
 let page_numbers = document.getElementsByClassName("page-number");
 
 // Page number
-let page = 1;
+let page = localStorage.getItem("page_number");
+
+if (page === null) {
+    page = 1;
+}
 
 // Number of rows per page
 let rows_per_page = 25;
@@ -205,6 +209,8 @@ function loadPage(page_number) {
     if (page_number > Math.ceil(filtered_rows.length / rows_per_page)) {
         page_number = Math.ceil(filtered_rows.length / rows_per_page);
     }
+
+    localStorage.setItem("page_number", page_number.toString());
 
     // Clear the table body
     tbody.innerHTML = "";

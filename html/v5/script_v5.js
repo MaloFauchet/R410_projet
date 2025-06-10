@@ -23,7 +23,11 @@ let sortby = {
 let page_numbers = document.getElementsByClassName("page-number");
 
 // Page number
-let page = 1;
+let page = localStorage.getItem("page_number");
+
+if (page === null) {
+    page = 1;
+}
 
 // Number of rows per page
 let rows_per_page = 25;
@@ -149,7 +153,6 @@ Object.values(Country.all_countries).map((country) => {
 //////////
 
 function updateSortBy(sortedby) {
-    debugger;
     let selected_sortby = Object.keys(sortby).find((key) => sortby[key] !== 0);
     document.getElementById(selected_sortby).classList.add("filtre-selected");
 
@@ -293,6 +296,8 @@ function loadPage(page_number) {
     if (page_number > Math.ceil(filtered_rows.length / rows_per_page)) {
         page_number = Math.ceil(filtered_rows.length / rows_per_page);
     }
+
+    localStorage.setItem("page_number", page_number.toString());
 
     // Clear the table body
     tbody.innerHTML = "";
