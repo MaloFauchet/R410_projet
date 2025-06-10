@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <div id="popup" style="display: none;">
-        <div id="popup-content">
-            <h2>Popup Title</h2>
-            <p>This is a popup message.</p>
+    <div id="container-pop-up" style="display: none">
+        <div id="popup">
+            <div id="popup-content">
+                <h2>Popup Title</h2>
+                <p>This is a popup message.</p>
+            </div>
+            <button id="popup-close-button">Fermer</button>
         </div>
-        <button id="popup-close-button">Fermer</button>
     </div>
-    
 
     <main>
         <h1>Liste des pays</h1>
@@ -22,24 +25,27 @@
         <aside>
             <h2>Filtres</h2>
             <div id="filters">
-                <label for="continent-select">Continent</label>
-                <select id="continent-select">
-                    <option value="">Tous</option>
-                    
-                </select>
-
-                <label for="language-select">Langue</label>
-                <select id="language-select">
-                    <option value="">Toutes</option>
-                </select>
-
-                <label for="country-select">Pays</label>
-                <input type="text" name="country-select" id="country-select" placeholder="Rechercher un pays...">
+                <div>
+                    <label for="continent-select">Continent</label>
+                    <select id="continent-select">
+                        <option value="">Tous</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="language-select">Langue</label>
+                    <select id="language-select">
+                        <option value="">Toutes</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="country-select">Pays</label>
+                    <input type="text" name="country-select" id="country-select" placeholder="Rechercher un pays..." />
+                </div>
             </div>
         </aside>
 
         <h3>Page n°<span class="page-number"></span></h3>
-        
+
         <table>
             <thead>
                 <th id="country-name">Nom</th>
@@ -49,9 +55,7 @@
                 <th id="country-continent">Continent d'appartenance</th>
                 <th>Drapeau</th>
             </thead>
-            <tbody id="countries-tbody">
-
-            </tbody>
+            <tbody id="countries-tbody"></tbody>
         </table>
 
         <div id="buttons-box">
@@ -68,4 +72,5 @@
     <script src="/data/class_country.js"></script>
     <script src="script_v5.js"></script>
 </body>
+
 </html>
