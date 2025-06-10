@@ -29,7 +29,7 @@ let page = 1;
 let rows_per_page = 25;
 
 // DOM element of the popup
-let popup = document.getElementById("popup");
+let popup = document.getElementById("container-pop-up");
 popup.style.display = "none";
 
 // DOM element of the popup content
@@ -149,7 +149,6 @@ Object.values(Country.all_countries).map((country) => {
 //////////
 
 function updateSortBy(sortedby) {
-    debugger;
     let selected_sortby = Object.keys(sortby).find((key) => sortby[key] !== 0);
     document.getElementById(selected_sortby).classList.add("filtre-selected");
 
@@ -369,5 +368,7 @@ function trClick(country) {
         "<p>Continent: " + country.continent + "</p>";
 
     // show the popup
-    popup.style.display = "block";
+    popup.style.display = "flex";
+    popup.style.alignItems = "center";
+    popup.style.justifyContent = "center";
 }
