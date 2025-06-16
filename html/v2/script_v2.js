@@ -73,9 +73,10 @@ Object.values(Country.all_countries).map((country) => {
  * @returns {void}
  */
 function updatePageNumber() {
+    let number_of_pages = Math.ceil(rows.length / rows_per_page);
     // Update the page number display
     for (let i = 0; i < page_numbers.length; i++) {
-        page_numbers[i].innerText = page;
+        page_numbers[i].innerText = page + " / " + number_of_pages;
     }
 }
 
