@@ -25,7 +25,7 @@ let page_numbers = document.getElementsByClassName("page-number");
 // Page number
 let page = parseInt(localStorage.getItem("page_number"));
 
-if (page === null) {
+if (page === null || isNaN(page) || page < 1) {
     page = 1;
 }
 
