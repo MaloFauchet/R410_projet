@@ -1,68 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="container-pop-up" style="display: none">
-        <div id="popup">
-            <div id="popup-content">
-                <h2>Popup Title</h2>
-                <p>This is a popup message.</p>
-            </div>
-            <button id="popup-close-button">Fermer</button>
+      <div id="popup">
+        <div id="popup-content">
+          <h2>Popup Title</h2>
+          <p>This is a popup message.</p>
         </div>
+        <button id="popup-close-button">Fermer</button>
+      </div>
     </div>
 
     <main>
-        <h1>Liste des pays</h1>
+      <h1>Liste des pays</h1>
 
-        <aside>
-            <h2>Filtres</h2>
-            <div id="filters">
-                <div>
-                    <label for="continent-select">Continent</label>
-                    <select id="continent-select">
-                        <option value="">Tous</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="language-select">Langue</label>
-                    <select id="language-select">
-                        <option value="">Toutes</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="country-select">Pays</label>
-                    <input type="text" name="country-select" id="country-select" placeholder="Rechercher un pays..." />
-                </div>
-            </div>
-        </aside>
-
-        <h3>Page n°<span class="page-number"></span></h3>
-
-        <table>
-            <thead>
-                <th id="country-name" class="croissant">Nom</th>
-                <th id="country-population">Population</th>
-                <th id="country-area">Surface</th>
-                <th id="country-population-density">Densité de population</th>
-                <th id="country-continent">Continent d'appartenance</th>
-                <th>Drapeau</th>
-            </thead>
-            <tbody id="countries-tbody"></tbody>
-        </table>
-
-        <div id="buttons-box">
-            <button type="button" id="previous-button">PRÉC</button>
-            <p class="page-number"></p>
-            <button type="button" id="next-button">SUIV</button>
+      <aside>
+        <h2>Filtres</h2>
+        <div id="filters">
+          <div>
+            <label for="continent-select">Continent</label>
+            <select id="continent-select">
+              <option value="">Tous</option>
+            </select>
+          </div>
+          <div>
+            <label for="language-select">Langue</label>
+            <select id="language-select">
+              <option value="">Toutes</option>
+            </select>
+          </div>
+          <div>
+            <label for="country-select">Pays</label>
+            <input
+              type="text"
+              name="country-select"
+              id="country-select"
+              placeholder="Rechercher un pays..."
+            />
+          </div>
         </div>
+      </aside>
+
+      <h3>Page n°<span class="page-number"></span></h3>
+
+      <table>
+        <thead>
+          <th id="country-name">
+            <div>
+              <p>Nom</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35"
+                fill="currentColor"
+                class="bi bi-arrow-down-short"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35"
+                fill="currentColor"
+                class="bi bi-arrow-up-short"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"
+                />
+              </svg>
+            </div>
+          </th>
+          <th id="country-population">
+            <div>
+              <p>Population</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35"
+                fill="currentColor"
+                class="bi bi-arrow-down-short"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35"
+                fill="currentColor"
+                class="bi bi-arrow-up-short"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"
+                />
+              </svg>
+            </div>
+          </th>
+          <th id="country-area">
+            <div>
+              <p>Surface</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35"
+                fill="currentColor"
+                class="bi bi-arrow-down-short"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35"
+                fill="currentColor"
+                class="bi bi-arrow-up-short"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"
+                />
+              </svg>
+            </div>
+          </th>
+          <th id="country-population-density">
+            <div>
+              <p>Densité de population</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35"
+                fill="currentColor"
+                class="bi bi-arrow-down-short"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35"
+                fill="currentColor"
+                class="bi bi-arrow-up-short"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"
+                />
+              </svg>
+            </div>
+          </th>
+          <th id="country-continent">
+            <div>
+              <p>Continent d'appartenance</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35"
+                fill="currentColor"
+                class="bi bi-arrow-down-short"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35"
+                fill="currentColor"
+                class="bi bi-arrow-up-short"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"
+                />
+              </svg>
+            </div>
+          </th>
+          <th><p>Drapeau</p></th>
+        </thead>
+        <tbody id="countries-tbody"></tbody>
+      </table>
+
+      <div id="buttons-box">
+        <button type="button" id="previous-button">PRÉC</button>
+        <p class="page-number"></p>
+        <button type="button" id="next-button">SUIV</button>
+      </div>
     </main>
 
     <script src="/data/countries.js"></script>
@@ -70,6 +224,5 @@
     <script src="/data/class_language.js"></script>
     <script src="/data/class_country.js"></script>
     <script src="script_v5.js"></script>
-</body>
-
+  </body>
 </html>

@@ -52,6 +52,12 @@ table thead th {
     position: relative;
 }
 
+table thead th div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 table thead th:first-child {
     border-top-left-radius: 6px;
 }
