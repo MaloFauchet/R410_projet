@@ -275,6 +275,18 @@ function sortFilteredRows() {
         }
 
         // Compare the values based on the sort order
+        // if both values are NaN, sort by the country name
+        if (isNaN(value_a) && isNaN(value_b)) {
+            value_a = row_a.querySelector("[data-type='country-name']").innerText;
+            value_b = row_b.querySelector("[data-type='country-name']").innerText;
+        }
+
+        // if one value is NaN, sort the other value first
+        if (isNaN(value_a)) {
+            return 1;
+        } else if (isNaN(value_b)) {
+            return -1;
+        }
         if (sort_order === 1) {
             return value_a > value_b ? 1 : -1;
         } else if (sort_order === 2) {
