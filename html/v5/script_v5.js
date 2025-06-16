@@ -153,7 +153,6 @@ Object.values(Country.all_countries).map((country) => {
 //////////
 
 function updateSortBy(sortedby) {
-    debugger;
     // remove precedent filter class
     let filtered_elem = [].slice.call(document.getElementsByClassName('filtre-selected'));
     for (let i = 0; i < filtered_elem.length; i++) {
@@ -218,6 +217,7 @@ document.getElementById("country-continent").onclick = () => {
 function updateFilters() {
     reloadFilteredRows();
     sortFilteredRows();
+    updateIcons();
     loadPage(page);
 }
 
@@ -279,7 +279,7 @@ function sortFilteredRows() {
             return value_a > value_b ? 1 : -1;
         } else if (sort_order === 2) {
             return value_a < value_b ? 1 : -1;
-        }
+        }        
     });
 }
 
@@ -295,7 +295,6 @@ function updatePageNumber() {
         page_numbers[i].innerText = page + " / " + number_of_pages;
     }
 }
-
 
 /**
  * Loads the specified page of the table
@@ -374,7 +373,9 @@ function imgClick(event, country) {
     popup_content.innerHTML = "<img src='" + country.url_flag_svg + "' alt='" + country.name + " flag' style='width: 100%;' />";
 
     // show the popup
-    popup.style.display = "block";
+    popup.style.display = "flex";
+    popup.style.alignItems = "center";
+    popup.style.justifyContent = "center";
 }
 
 /**
@@ -393,4 +394,29 @@ function trClick(country) {
     popup.style.display = "flex";
     popup.style.alignItems = "center";
     popup.style.justifyContent = "center";
+}
+
+function changeFilterIcon(id, order){
+    let arrow = document.getElementById(id + "-filter");
+    switch (order) {
+        case 1:
+            arrow.style.display = "block";
+            arrow.style.transform = "rotate(360deg)"
+            break;
+
+        case 2:
+            arrow.style.display = "block";
+            arrow.style.transform = "rotate(180deg)"
+            break;
+
+        default:
+            arrow.style.display = "none";
+            break;
+    }   
+}
+
+function updateIcons(){
+    Object.keys(sortby).forEach((key) => {
+        changeFilterIcon(key, sortby[key])
+    });
 }
