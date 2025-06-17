@@ -159,10 +159,10 @@ function updateSortBy(sortedby) {
         filtered_elem[i].classList.remove("filtre-selected");
         try {
             filtered_elem[i].classList.remove("croissant");
-        } catch (error) {console.log(error)}
+        } catch (error) {console.log(error);}
         try {
             filtered_elem[i].classList.remove("decroissant");
-        } catch (error) {console.log(error)}
+        } catch (error) {console.log(error);}
     }
 
     document.getElementById(sortedby).classList.add("filtre-selected");
@@ -413,12 +413,12 @@ function changeFilterIcon(id, order){
     switch (order) {
         case 1:
             arrow.style.display = "block";
-            arrow.style.transform = "rotate(360deg)"
+            arrow.style.transform = "rotate(360deg)";
             break;
 
         case 2:
             arrow.style.display = "block";
-            arrow.style.transform = "rotate(180deg)"
+            arrow.style.transform = "rotate(180deg)";
             break;
 
         default:
@@ -429,6 +429,6 @@ function changeFilterIcon(id, order){
 
 function updateIcons(){
     Object.keys(sortby).forEach((key) => {
-        changeFilterIcon(key, sortby[key])
+        changeFilterIcon(key, sortby[key]);
     });
 }
